@@ -5,7 +5,6 @@ import { Ionicons } from '@expo/vector-icons'; // Assuming Ionicons is installed
 const MainScreen = ({ navigation }) => {
   const [isMenuVisible, setMenuVisible] = useState(false);
 
-
   const toggleMenu = () => {
     setMenuVisible(!isMenuVisible);
   };

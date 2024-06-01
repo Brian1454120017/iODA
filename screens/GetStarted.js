@@ -30,7 +30,6 @@ const GetStartedScreen = ({ navigation }) => {
   );y
 };
 
-
 const styles = StyleSheet.create({
 
   contentContainer: {

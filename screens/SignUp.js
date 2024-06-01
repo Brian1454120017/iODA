@@ -11,19 +11,17 @@ const SignUpScreen = ({ navigation }) => {
   const [password, setPassword] = useState('');
   const [verifyPassword, setVerifyPassword] = useState('');
   const [homeAddress, setHomeAddress] = useState('');
-  const [isChecked, setIsChecked] = useState(false); // State for radio button
-  const [selectedCity, setSelectedCity] = useState(null); // State for selected city
+  const [isChecked, setIsChecked] = useState(false);
+  const [selectedCity, setSelectedCity] = useState(null);
 
   const handleSignUp = () => {
     // Implement your Sign Up logic here
     // Implement your Sign Up logic here
-    // For now, just navigate to the SecondScreen
     navigation.navigate('Login');
   };
 
   const handleLogin = () => {
     // Implement your login logic here
-    // For now, just navigate to the SecondScreen
     navigation.navigate('Login');
   };
 

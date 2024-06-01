@@ -9,13 +9,12 @@ const SignInScreen = ({ navigation }) => {
 
   const handleLogin = () => {
     // Implement your login logic here
-    // For now, just navigate to the SecondScreen
     navigation.navigate('Home');
   };
 
   const handleResetPassword = () => {
     // Implement your reset password logic here
-    // This can navigate to a reset password screen or show a modal, etc.
+    // This can navigate to a reset password screen or show a modal.
     alert('Reset Password clicked');
   };
 

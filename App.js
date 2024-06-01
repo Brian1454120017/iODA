@@ -12,6 +12,7 @@ import ProfileScreen from './screens/Profile';
 
 const Stack = createStackNavigator();
 
+
 const App = () => {
   return (
     <NavigationContainer>

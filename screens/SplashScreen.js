@@ -28,6 +28,7 @@ const SplashScreen = ({ navigation }) => {
 };
 
 
+
 const styles = StyleSheet.create({
 
     contentContainer: {
