@@ -85,6 +85,7 @@ const MainScreen = ({ navigation }) => {
         <Text>Other Content Goes Here</Text>
       </View>
       
+      
      {/* Tab Navigation */}
      <View style={styles.tabBar}>
         <TouchableOpacity onPress={handleRedirectToHome} style={styles.tab}>
