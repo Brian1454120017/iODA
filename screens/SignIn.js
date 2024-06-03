@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import {StyleSheet, View, Text, TextInput, Button, TouchableOpacity, Image } from 'react-native';
+import externalStyles  from '../assets/main';
 
 const SignInScreen = ({ navigation }) => {
   const [phoneNumber, setPhoneNumber] = useState('');
@@ -21,7 +22,7 @@ const SignInScreen = ({ navigation }) => {
   const handleCancel = () => {
     // Implement your cancel logic here
     // For now, just navigate back to the Splash screen
-    navigation.navigate('Home');
+    navigation.navigate('Getstarted');
   };
 
   const handleRedirectToSignUp = () => {
@@ -37,7 +38,7 @@ const SignInScreen = ({ navigation }) => {
       <View style={styles.logoContainer}>
         <Image source={require('../assets/login.png')} style={styles.logo} />
       </View>
-      <Text style={styles.caption }>LOGIN</Text>
+      <Text style={styles.caption }>Sign In</Text>
       <TextInput
         placeholder="Phone Number"
         value={phoneNumber}
@@ -52,23 +53,24 @@ const SignInScreen = ({ navigation }) => {
         secureTextEntry
         style={{ borderWidth: 1, borderRadius: 50, padding: 6, margin: 10, width: 300, }}
       />
-
+      <View style={styles.forgottenPasswordWrap}>
+        <TouchableOpacity onPress={handleResetPassword}>
+          <Text style={{ color: '#ff0000', padding: 10, fontSize: 14,}}>Forgotten Password</Text>
+        </TouchableOpacity>
+      </View>
         <TouchableOpacity  onPress={handleLogin}>
-          <Text style={ styles. loginButton}>LOGIN</Text>
+          <Text style={ styles. loginButton}>Sign In</Text>
         </TouchableOpacity>
 
-      <View style={{ flexDirection: 'row', marginTop: 10, }}>
-        <TouchableOpacity onPress={handleResetPassword} style={{ marginLeft: 5,}}>
-          <Text style={{ color: '#2D448B', fontWeight: 'bold', padding: 10, fontSize: 18,}}>Forgotten Password</Text>
-        </TouchableOpacity>
-
+      {/* <View style={{ flexDirection: 'row', marginTop: 10, }}>
         <TouchableOpacity onPress={handleCancel} style={{ marginRight: 5 }}>
           <Text style={{ color: 'red', fontWeight: 'bold', padding: 10, fontSize: 18}}>Cancel</Text>
         </TouchableOpacity>
-      </View>
-      <View style={{ flexDirection: 'row', marginTop: 10, }}>
-        <TouchableOpacity onPress={handleRedirectToSignUp} style={{ marginLeft: 5,}}>
-          <Text style={{ color: '#2D448B', fontWeight: 'bold', padding: 10, fontSize: 18,}}>Create Account</Text>
+      </View> */}
+      <View style={externalStyles.signUpLinkWrap}>
+        <Text>Dont have an account?</Text>
+        <TouchableOpacity onPress={handleRedirectToSignUp} style={{ display: 'flex', marginLeft: 5, }}>
+          <Text style={{ color: '#ff0000', fontWeight: 'bold',}}>Sign Up</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -85,14 +87,14 @@ const styles = StyleSheet.create({
 
   appName: {
     fontSize: 35,
-    color: '#2D448B',
+    color: '#ff0000',
     fontWeight: 'bold',
     marginBottom: 40,
   },
 
   caption: {
     fontSize: 40,
-    color: '#2D448B',
+    color: '#ff0000',
     fontWeight: 'bold',
   },
   
@@ -107,8 +109,13 @@ const styles = StyleSheet.create({
     marginBottom: 40, // Add some space between logo and text
   },
 
+  forgottenPasswordWrap: {
+    width: '80%',
+    alignItems: 'flex-end',
+  },
+
   loginButton:{
-    backgroundColor: '#2D448B',
+    backgroundColor: '#ff0000',
     color: '#ffffff', 
     width: 200, 
     textAlign:'center', 
@@ -116,10 +123,12 @@ const styles = StyleSheet.create({
     fontWeight: 'bold', 
     marginTop: 15, 
     marginBottom: 15,
-    backgroundColor: '#2d448b',
+    backgroundColor: '#ff0000',
     padding: 10,
     borderRadius: 50,
   },
+  
+
 
 });
 

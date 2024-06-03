@@ -1,9 +1,10 @@
 // screens/HomeScreen.js
 
 import React, { useState } from 'react';
-import { StyleSheet, View, Text, TextInput, TouchableOpacity } from 'react-native';
-import { RadioButton } from 'react-native-paper'; // Import RadioButton from react-native-paper
+import { StyleSheet, View, Text, TextInput, TouchableOpacity, Image} from 'react-native';
+import { RadioButton } from 'react-native-paper'; 
 import RNPickerSelect from 'react-native-picker-select';
+import externalStyles from '../assets/main';
 
 const SignUpScreen = ({ navigation }) => {
   const [fullName, setFullName] = useState('');
@@ -20,34 +21,32 @@ const SignUpScreen = ({ navigation }) => {
     navigation.navigate('Login');
   };
 
-  const handleLogin = () => {
+  const handleSignIn = () => {
     // Implement your login logic here
-    navigation.navigate('Login');
+    navigation.navigate('Signin');
   };
 
   const handleCancel = () => {
-    // Implement your cancel logic here
-    // For now, just navigate back to the Splash screen
-    navigation.navigate('Home');
+    navigation.navigate('Getstarted');
   };
 
   return (
      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-       <View style={styles.logoContainer}>
-            {/* <Image source={require('/snappetTest/assets/logo.png')} style={styles.logo} /> */}
-            <Text style={styles.appName}>iODA</Text>
-      </View>
-      <Text style={styles.caption }>SIGN UP</Text>
+      <Text style={styles.caption }>Sign Up</Text>
+      {/* <View style={styles.logoContainer}>
+        <Image source={require('../assets/signup.png')} style={styles.logo} />
+      </View> */}
+      <Text>Enter your credentials below to create an account</Text>
       <TextInput
         placeholder="Full Name"
         value={fullName}
         onChangeText={text => setFullName(text)}
-        style={{ borderWidth: 1, borderRadius: 50, padding: 6, margin: 10, width: 300 }}
+        style={styles.inputFeild}
       />
 
       {/* Radio button */}
       <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 10 }}>
-        <Text  style={{ color: '#2D448B', fontSize: 18, fontWeight: 'bold',  }}>Select Gender</Text>
+        <Text  style={{ color: '#ff0000', fontSize: 16, fontWeight: 'bold',  }}>Select Gender</Text>
         <RadioButton.Android
           value="male"
           status={isChecked ? 'checked' : 'unchecked'}
@@ -66,7 +65,7 @@ const SignUpScreen = ({ navigation }) => {
         placeholder="Phone Number"
         value={phoneNumber}
         onChangeText={text => setPhoneNumber(text)}
-        style={{ borderWidth: 1, borderRadius: 50, padding: 6, margin: 10, width: 300 }}
+        style={styles.inputFeild}
       />
 
 
@@ -74,7 +73,7 @@ const SignUpScreen = ({ navigation }) => {
         placeholder="Home Address"
         value={homeAddress}
         onChangeText={text => setHomeAddress(text)}
-        style={{ borderWidth: 1, borderRadius: 50, padding: 6, margin: 10, width: 300 }}
+        style={styles.inputFeild}
       />
 
       <RNPickerSelect
@@ -93,9 +92,9 @@ const SignUpScreen = ({ navigation }) => {
             inputAndroid: {
             borderWidth: 1,
             borderRadius: 50,
-            padding: 6,
-            margin: 10,
-            width: 300,
+            padding: 5,
+            margin: 6,
+            width: 200,
           },
         }}
       />          
@@ -105,7 +104,7 @@ const SignUpScreen = ({ navigation }) => {
         value={password}
         onChangeText={text => setPassword(text)}
         secureTextEntry
-        style={{ borderWidth: 1, borderRadius: 50, padding: 6, margin: 10, width: 300, }}
+        style={styles.inputFeild}
       />
 
       <TextInput
@@ -113,23 +112,24 @@ const SignUpScreen = ({ navigation }) => {
         value={verifyPassword}
         onChangeText={text => setVerifyPassword(text)}
         secureTextEntry
-        style={{ borderWidth: 1, borderRadius: 50, padding: 6, margin: 10, width: 300, }}
+        style={styles.inputFeild}
       />
 
       <TouchableOpacity onPress={handleSignUp}>
-        <Text style={styles.loginButton}>SIGNUP</Text>
+        <Text style={styles.loginButton}>Sign Up</Text>
       </TouchableOpacity>
 
       <View style={{ flexDirection: 'row', marginTop: 10 }}>
-        <TouchableOpacity onPress={handleLogin} style={{ marginLeft: 5 }}>
-          <Text style={{ color: '#2D448B', fontWeight: 'bold', padding: 10, fontSize: 18 }}>
-            Already Have an Account?
-          </Text>
-        </TouchableOpacity>
+        <View style={externalStyles.signUpLinkWrap}>
+          <Text>Already have an account?</Text>
+          <TouchableOpacity onPress={handleSignIn} style={{ display: 'flex', marginLeft: 5, }}>
+            <Text style={{ color: '#ff0000', fontWeight: 'bold',}}>Sign In</Text>
+          </TouchableOpacity>
+        </View>
 
-        <TouchableOpacity onPress={handleCancel} style={{ marginRight: 5 }}>
-          <Text style={{ color: 'red', fontWeight: 'bold', padding: 10, fontSize: 18 }}>Cancel</Text>
-        </TouchableOpacity>
+        {/* <TouchableOpacity onPress={handleCancel} style={{ marginRight: 5 }}>
+          <Text style={{ color: 'red', fontWeight: 'bold', padding: 10, fontSize: 16 }}>Cancel</Text>
+        </TouchableOpacity> */}
       </View>
     </View>
   );
@@ -142,28 +142,23 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
 
-  appName: {
-    fontSize: 35,
-    color: '#2D448B',
-    fontWeight: 'bold',
-    marginBottom: 40,
-  },
 
   caption: {
-    fontSize: 40,
-    color: '#2D448B',
+    fontSize: 30,
+    color: '#ff0000',
     fontWeight: 'bold',
+    marginBottom: 10,
   },
   
   logoContainer: {
     alignItems: 'center',
-    justifyContent: 'center', // Center both logo and text horizontally
+    justifyContent: 'center', 
   },
 
   logo: {
-    width: 70, // Adjust as needed
-    height: 70, // Adjust as needed
-    marginBottom: 3, // Add some space between logo and text
+    width: 152,
+    height: 110,
+    marginBottom: 3, 
   },
 
   loginButton:{
@@ -174,11 +169,18 @@ const styles = StyleSheet.create({
     fontWeight: 'bold', 
     marginTop: 15, 
     marginBottom: 15,
-    backgroundColor: '#2d448b',
+    backgroundColor: '#ff0000',
     padding: 10,
     borderRadius: 50,
   },
 
+  inputFeild: {
+    borderWidth: 1,
+    borderRadius: 50,
+    padding: 5,
+    margin: 10,
+    width: 300, 
+  },
 });
 
 export default SignUpScreen;
